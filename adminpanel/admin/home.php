@@ -64,7 +64,7 @@ if(!isset($_SESSION['admin']['adminnakalogin']) == true) header("location:index.
 
 
  ?> 
-<img src="../../assets/images/Online.png">
+<!-- <img src="../../assets/images/Online.png"> -->
 
 <!-- MAO NI IYA FOOTER -->
 <?php include("includes/footer.php"); ?>

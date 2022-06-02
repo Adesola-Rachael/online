@@ -6,19 +6,19 @@ if(!isset($_SESSION['examineeSession']['examineenakalogin']) == true) header("lo
 
  ?>
 <?php include("conn.php"); ?>
-<!-- MAO NI ANG HEADER -->
+<!-- PAGE HEADER -->
 <?php include("includes/header.php"); ?>      
 
-<!-- UI THEME DIRI -->
+<
 <?php //include("includes/ui-theme.php"); ?>
 
 <div class="app-main">
-<!-- sidebar diri  -->
+<!-- sidebar   -->
 <?php include("includes/sidebar.php"); ?>
 
 
 
-<!-- Condition If unza nga page gi click -->
+<!-- Condition If page  click -->
 <?php 
    @$page = $_GET['page'];
 
@@ -39,7 +39,7 @@ if(!isset($_SESSION['examineeSession']['examineenakalogin']) == true) header("lo
      }
      
    }
-   // Else ang home nga page mo display
+   // Else display home 
    else
    {
      include("pages/home.php"); 
@@ -47,9 +47,9 @@ if(!isset($_SESSION['examineeSession']['examineenakalogin']) == true) header("lo
 
 
  ?> 
-<img src="assets/images/Online.png">
+<img src="assets/images/2.jpg">
 
-<!-- MAO NI IYA FOOTER -->
+<!--FOOTER -->
 <?php include("includes/footer.php"); ?>
 
 <?php include("includes/modals.php"); ?>
