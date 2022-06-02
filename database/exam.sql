@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2021 at 01:40 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Generation Time: Jun 02, 2022 at 07:39 PM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -57,9 +57,10 @@ CREATE TABLE `course_tbl` (
 --
 
 INSERT INTO `course_tbl` (`cou_id`, `cou_name`, `cou_created`) VALUES
-(25, 'BSHRM', '2019-11-27 09:26:08'),
-(26, 'BSIT', '2019-11-25 13:22:42'),
-(65, 'BSCRIM', '2019-12-02 09:25:36');
+(66, 'MATHEMATICS ', '2022-06-02 14:45:16'),
+(67, 'ENGLISH ', '2022-06-02 14:45:40'),
+(68, 'BIOLOGY', '2022-06-02 14:45:54'),
+(69, 'CHEMISTRY ', '2022-06-02 14:46:06');
 
 -- --------------------------------------------------------
 
@@ -84,11 +85,9 @@ CREATE TABLE `examinee_tbl` (
 --
 
 INSERT INTO `examinee_tbl` (`exmne_id`, `exmne_fullname`, `exmne_course`, `exmne_gender`, `exmne_birthdate`, `exmne_year_level`, `exmne_email`, `exmne_password`, `exmne_status`) VALUES
-(4, 'Rogz Nune', '26', 'male', '2019-11-15', 'third year', 'rogz.nunez2013@gmail.com', 'rogz', 'active'),
-(5, 'Jane Rivera', '25', 'female', '2019-11-14', 'second year', 'jane@gmail.com', 'jane', 'active'),
-(6, 'Angel Jude Suarez', '26', 'male', '2019-12-24', 'third year', 'jude@gmail.com', 'jude', 'active'),
-(7, 'Maria Duerme', '26', 'female', '2018-11-25', 'second year', 'maria@gmail.com', 'maria', 'active'),
-(8, 'Dave Limasac', '26', 'female', '2019-12-21', 'second year', 'dave@gmail.com', 'dave', 'active');
+(10, 'Adesolola', '66', 'female', '2022-10-11', 'first year', 'tinu@gmail.com', '12345678', 'active'),
+(11, 'bola tito', '67', 'female', '2019-01-01', 'first year', 'tito@gmail.com', '12345678', 'active'),
+(12, 'Taye Kings ', '69', 'male', '1994-11-02', 'first year', 'kin@gmail.com', '12345678', 'active');
 
 -- --------------------------------------------------------
 
@@ -143,7 +142,12 @@ INSERT INTO `exam_answers` (`exans_id`, `axmne_id`, `exam_id`, `quest_id`, `exan
 (324, 9, 24, 34, '8', 'new', '2020-01-12 04:47:37'),
 (325, 9, 24, 32, '1', 'new', '2020-01-12 04:47:37'),
 (326, 9, 25, 36, '4', 'new', '2020-01-12 05:10:11'),
-(327, 9, 26, 37, '4', 'new', '2020-01-12 05:13:34');
+(327, 9, 26, 37, '4', 'new', '2020-01-12 05:13:34'),
+(328, 10, 12, 22, 'Inernet', 'new', '2022-06-02 17:22:11'),
+(329, 10, 12, 18, 'Programmable Logic Controller', 'new', '2022-06-02 17:22:11'),
+(330, 10, 12, 17, 'Image Color Matching Profile file', 'new', '2022-06-02 17:22:11'),
+(331, 10, 12, 21, 'Image file', 'new', '2022-06-02 17:22:11'),
+(332, 10, 12, 16, 'Database', 'new', '2022-06-02 17:22:11');
 
 -- --------------------------------------------------------
 
@@ -163,13 +167,14 @@ CREATE TABLE `exam_attempt` (
 --
 
 INSERT INTO `exam_attempt` (`examat_id`, `exmne_id`, `exam_id`, `examat_status`) VALUES
-(51, 6, 12, 'used'),
-(52, 4, 11, 'used'),
-(53, 4, 12, 'used'),
+(0, 10, 12, 'used'),
 (54, 8, 12, 'used'),
 (55, 9, 24, 'used'),
 (56, 9, 25, 'used'),
-(57, 9, 26, 'used');
+(57, 9, 26, 'used'),
+(66, 4, 11, 'used'),
+(67, 6, 12, 'used'),
+(68, 4, 12, 'used');
 
 -- --------------------------------------------------------
 
@@ -194,6 +199,7 @@ CREATE TABLE `exam_question_tbl` (
 --
 
 INSERT INTO `exam_question_tbl` (`eqt_id`, `exam_id`, `exam_question`, `exam_ch1`, `exam_ch2`, `exam_ch3`, `exam_ch4`, `exam_answer`, `exam_status`) VALUES
+(0, 26, 'Which of the following is correct', 'Electron valent bond involves  sharing of electron', 'Covalent bond involves transfer of electron', 'covalent bond involves  sharing of electron', 'None is correc', 'covalent bond involves  sharing of electron', 'active'),
 (9, 12, 'In which decade was the American Institute of Electrical Engineers (AIEE) founded?', '1850s', '1880s', '1930s', '1950s', '1880s', 'active'),
 (10, 12, 'What is part of a database that holds only one type of information?', 'Report', 'Field', 'Record', 'File', 'Field', 'active'),
 (14, 12, 'OS computer abbreviation usually means ?', 'Order of Significance', 'Open Software', 'Operating System', 'Optical Sensor', 'Operating System', 'active'),
@@ -240,12 +246,13 @@ CREATE TABLE `exam_tbl` (
 --
 
 INSERT INTO `exam_tbl` (`ex_id`, `cou_id`, `ex_title`, `ex_time_limit`, `ex_questlimit_display`, `ex_description`, `ex_created`) VALUES
-(11, 26, 'Duerms', '1', 2, 'qwe', '2019-12-05 12:03:21'),
-(12, 26, 'Another Exam', '1', 5, 'Mabilisang Exam', '2019-12-04 15:19:18'),
-(13, 26, 'Exam Again', '5', 0, 'again and again\r\n', '2019-11-30 08:24:54'),
-(24, 65, 'math', '10', 5, 'basic math', '2020-01-12 05:04:45'),
-(25, 65, 'math 2', '10', 3, 'basic math 2', '2020-01-12 05:08:44'),
-(26, 65, 'math3', '10', 3, 'basic math3', '2020-01-12 05:12:11');
+(0, 66, 'summer', '20', 10, 'students get examined as per the their knowledge abouit chemistry', '2022-06-02 17:08:11'),
+(11, 66, 'Duerms', '1', 2, 'qwe', '2022-06-02 17:08:43'),
+(12, 66, 'Another Exam', '1', 5, 'Mabilisang Exam', '2022-06-02 17:08:50'),
+(13, 66, 'Exam Again', '5', 0, 'again and again\r\n', '2022-06-02 17:09:05'),
+(24, 67, 'math', '10', 5, 'basic math', '2022-06-02 17:09:46'),
+(25, 68, 'math 2', '10', 3, 'basic math 2', '2022-06-02 17:19:40'),
+(26, 68, 'math3', '20', 10, 'basic math3', '2022-06-02 17:19:46');
 
 -- --------------------------------------------------------
 
@@ -340,43 +347,19 @@ ALTER TABLE `admin_acc`
 -- AUTO_INCREMENT for table `course_tbl`
 --
 ALTER TABLE `course_tbl`
-  MODIFY `cou_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `cou_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `examinee_tbl`
 --
 ALTER TABLE `examinee_tbl`
-  MODIFY `exmne_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `exmne_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `exam_answers`
 --
 ALTER TABLE `exam_answers`
-  MODIFY `exans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=328;
-
---
--- AUTO_INCREMENT for table `exam_attempt`
---
-ALTER TABLE `exam_attempt`
-  MODIFY `examat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
-
---
--- AUTO_INCREMENT for table `exam_question_tbl`
---
-ALTER TABLE `exam_question_tbl`
-  MODIFY `eqt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
-
---
--- AUTO_INCREMENT for table `exam_tbl`
---
-ALTER TABLE `exam_tbl`
-  MODIFY `ex_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
-
---
--- AUTO_INCREMENT for table `feedbacks_tbl`
---
-ALTER TABLE `feedbacks_tbl`
-  MODIFY `fb_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `exans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=333;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
